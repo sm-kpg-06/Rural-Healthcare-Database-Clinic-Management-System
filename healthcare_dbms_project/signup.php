@@ -29,17 +29,21 @@ if(isset($_POST['signup'])){
         $error = "Passwords do not match!";
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $check = $conn->query("SELECT * FROM APP_USER WHERE Username='$username' OR Email='$email'");
+        $safe_username = $conn->real_escape_string($username);
+        $safe_email = $conn->real_escape_string($email);
+        $safe_password = $conn->real_escape_string($hashed_password);
+        
+        $check = $conn->query("SELECT * FROM APP_USER WHERE Username='$safe_username' OR Email='$safe_email'");
         
         if($check && $check->num_rows > 0){
             $error = "Username or email already exists!";
         } else {
-            $insert_sql = "INSERT INTO APP_USER (Username, Email, Password) VALUES ('$username', '$email', '$hashed_password')";
+            $insert_sql = "INSERT INTO APP_USER (Username, Email, Password) VALUES ('$safe_username', '$safe_email', '$safe_password')";
             if($conn->query($insert_sql)){
                 $success = "Account created successfully! Please sign in.";
                 $_POST = [];
             } else {
-                $error = "Error creating account. Please try again.";
+                $error = "Error creating account: " . $conn->error;
             }
         }
     }
