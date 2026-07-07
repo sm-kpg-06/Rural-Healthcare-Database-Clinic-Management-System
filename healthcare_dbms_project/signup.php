@@ -70,9 +70,6 @@ include 'header.php';
 
     <?php if(!empty($success)): ?>
         <p style="color: #4facfe; margin-top: 15px; font-weight: 600;"><?php echo $success; ?></p>
-        <p style="color: var(--text-secondary); margin-top: 10px;">
-            Already have an account? <a href="login.php" style="color: var(--accent-color); text-decoration: none; font-weight: 600;">Sign In</a>
-        </p>
     <?php endif; ?>
 
     <p style="color: var(--text-secondary); margin-top: 20px; text-align: center;">
