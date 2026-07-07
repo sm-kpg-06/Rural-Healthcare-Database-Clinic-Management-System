@@ -1,0 +1,38 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: healthcare-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: healthcare_db
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -prootpass --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: healthcare-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USERNAME: testuser
+      DB_PASSWORD: secret
+      DB_NAME: healthcare_db
+    ports:
+      - "8080:80"
+    volumes:
+      - ./healthcare_dbms_project:/var/www/html
+
+volumes:
+  mysql_data:
