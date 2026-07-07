@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rural Healthcare Clinic Management System</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: #f4f7fb;
+        color: #0f172a;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+      .card {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        padding: 32px;
+      }
+      h1 { margin-top: 0; }
+      .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+      a.button {
+        display: inline-block;
+        padding: 12px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .primary { background: #2563eb; color: white; }
+      .secondary { background: #e2e8f0; color: #0f172a; }
+      code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>Rural Healthcare Clinic Management System</h1>
+        <p>This project is a PHP + MySQL web application. The interactive dashboard and patient management screens require a server environment and database, so they cannot run directly from GitHub Pages.</p>
+        <p>Use this repository with Docker locally or deploy it to a PHP-compatible host such as Render, Railway, or Fly.io to access the full application.</p>
+        <div class="buttons">
+          <a class="button primary" href="https://github.com/sm-kpg-06/Rural-Healthcare-Database-Clinic-Management-System">View source code</a>
+          <a class="button secondary" href="https://github.com/sm-kpg-06/Rural-Healthcare-Database-Clinic-Management-System#readme">Read setup instructions</a>
+        </div>
+        <p style="margin-top: 24px;"><strong>Local run:</strong> <code>docker compose up --build -d</code></p>
+        <p>Then open <code>http://127.0.0.1:8080/</code>.</p>
+      </section>
+    </main>
+  </body>
+</html>
